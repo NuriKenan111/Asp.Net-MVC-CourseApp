@@ -1,0 +1,29 @@
+@model IEnumerable<Course>
+
+<h2>Course List</h2>
+<a asp-conroller="Course" asp-action="Create" class="btn btn-sm btn-success">Registration Course</a>
+<hr>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.CourseId)</th>
+            <th>@Html.DisplayNameFor(model => model.CourseName)</th>
+            <th>@Html.DisplayNameFor(model => model.CourseDescription)</th>
+            <th style="width: 150px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var course in Model){
+            <tr>
+                <td>@Html.DisplayFor(model => course.CourseId)</td>
+                <td>@Html.DisplayFor(model => course.CourseName)</td>
+                <td>@Html.DisplayFor(model => course.CourseDescription)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@course.CourseId" class="btn btn-sm btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@course.CourseId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
