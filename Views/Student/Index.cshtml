@@ -1,0 +1,29 @@
+@model IEnumerable<Student>
+
+<h2>Student List</h2>
+<a asp-conroller="Student" asp-action="Create" class="btn btn-sm btn-success">Registration Student</a>
+<hr>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.StudentId)</th>
+            <th>@Html.DisplayNameFor(model => model.StudentName)</th>
+            <th>@Html.DisplayNameFor(model => model.StudentSurname)</th>
+            <th style="width: 150px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var student in Model){
+            <tr>
+                <td>@Html.DisplayFor(model => student.StudentId)</td>
+                <td>@Html.DisplayFor(model => student.StudentName)</td>
+                <td>@Html.DisplayFor(model => student.StudentSurname)</td>
+                <td>
+                    <a  asp-action="Edit" asp-route-id="@student.StudentId" class="btn btn-sm btn-primary">Edit</a>
+                    <a  asp-action="Delete" asp-route-id="@student.StudentId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
