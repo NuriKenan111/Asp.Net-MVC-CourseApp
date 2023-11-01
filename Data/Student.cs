@@ -15,6 +15,6 @@ public class Student
     }
     public string? StudentEmail { get; set; }
     public string? StudentPhone { get; set; }
-
+    public ICollection<CourseRegistration> CourseRegistrations { get; set; } = new List<CourseRegistration>();
 
 }

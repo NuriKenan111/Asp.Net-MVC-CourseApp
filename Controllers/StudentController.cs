@@ -35,7 +35,12 @@ public class StudentController : Controller
         {
             return NotFound();
         }
-        var student = await _context.Students.FindAsync(id);
+        var student = await _context
+        .Students
+        .Include(c => c.CourseRegistrations)
+        .ThenInclude(c => c.Course)
+        .FirstOrDefaultAsync(c => c.StudentId == id);
+
         if(student == null)
         {
             return NotFound();

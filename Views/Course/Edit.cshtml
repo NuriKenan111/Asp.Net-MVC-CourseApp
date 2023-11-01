@@ -2,15 +2,29 @@
 
 <h2>Course Edit</h2>
 <hr>
-<form asp-controller="Course" asp-action="Edit" method="post">
-    <input type="hidden" asp-for="CourseId">
-    <div class="mb-3">
-        <label asp-for="CourseName" class="form-label">Course Name</label>
-        <input asp-for="CourseName" class="form-control">
+<div class="row">
+    <div class="col-8">
+        <form asp-controller="Course" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="CourseId">
+            <div class="mb-3">
+                <label asp-for="CourseName" class="form-label">Course Name</label>
+                <input asp-for="CourseName" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="CourseDescription" class="form-label">Course Description</label>
+                <input asp-for="CourseDescription" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-secondary">Save</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label asp-for="CourseDescription" class="form-label">Course Description</label>
-        <input asp-for="CourseDescription" class="form-control">
+
+    <div class="col-4">
+        <h4>Students</h4>
+        <ul>
+            @foreach(var item in Model.CourseRegistrations){
+                <li>@item.Student.StudentName @item.Student.StudentSurname</li>
+            }
+        </ul>
     </div>
-    <button type="submit" class="btn btn-secondary">Save</button>
-</form>
+
+</div>

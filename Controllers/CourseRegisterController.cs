@@ -14,8 +14,11 @@ public class CourseRegisterController : Controller
         _context = context;
     }
 
-    public IActionResult Index(){
-        return View();
+    public async Task<IActionResult> Index(){
+        var registrations = await _context.CourseRegistrations.Include(x => x.Student)
+                                                                .Include(x => x.Course).
+                                                                ToListAsync();
+        return View(registrations);
     }
 
     public async Task<IActionResult> Create()
